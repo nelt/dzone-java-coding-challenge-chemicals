@@ -8,20 +8,27 @@ import java.util.Arrays;
 public class SymbolFinder {
 
     public String firstSymbolFor(String element) {
-        StringBuilder result = new StringBuilder();
+        element = element.toLowerCase();
 
-        char[] ordered = element.substring(0, element.length() - 1).toUpperCase().toCharArray();
+        char first = this.findFirst(element);
+        char second = this.findSecond(element, first);
+
+        return new String(new char[] {Character.toUpperCase(first), second});
+    }
+
+    private char findFirst(String element) {
+        char[] ordered = element.substring(0, element.length() - 1).toCharArray();
         Arrays.sort(ordered);
-        char first = ordered[0];
-        int firstIndex = element.toUpperCase().indexOf(first);
+        return ordered[0];
+    }
 
+    private char findSecond(String element, char first) {
+        int firstIndex = element.indexOf(first);
         String afterFirst = element.substring(firstIndex + 1);
-        ordered = afterFirst.toLowerCase().toCharArray();
+
+        char[] ordered = afterFirst.toCharArray();
         Arrays.sort(ordered);
 
-        System.out.println(new String(ordered));
-
-        char second = ordered[0];
-        return result.append(first).append(second).toString();
+        return ordered[0];
     }
 }
