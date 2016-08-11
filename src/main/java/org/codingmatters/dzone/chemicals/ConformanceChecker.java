@@ -5,6 +5,19 @@ package org.codingmatters.dzone.chemicals;
  */
 public class ConformanceChecker {
 
+    public static void main(String[] args) {
+        if(args.length != 2) throw new RuntimeException("usage: <element name> <symbol>");
+
+        Conformity conformity = new ConformanceChecker().isConform(args[0], args[1]);
+        if(conformity.isConform()) {
+            System.out.println(args[1] + " symbol is conform for " + args[0]);
+            System.exit(0);
+        } else {
+            System.err.println(args[1] + " symbol is not conform for " + args[0] + " : " + conformity.getReason());
+            System.exit(1);
+        }
+    }
+
     public Conformity isConform(String element, String symbol) {
         element = element.toLowerCase();
         symbol = symbol.toLowerCase();
