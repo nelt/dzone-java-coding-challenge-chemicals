@@ -22,24 +22,43 @@ public class ConformanceChecker {
         element = element.toLowerCase();
         symbol = symbol.toLowerCase();
 
-        if(symbol.length() != 2) {
+        if(! this.isSymbolTwoLettersLong(symbol)) {
             return Conformity.notConform("symbol is more than 2 characters");
         }
 
-        for (char c : symbol.toCharArray()) {
-            if(element.indexOf(c) == -1) {
-                return Conformity.notConform("characters' symbols are not in element's name");
-            }
+        if(! this.isSymbolLettersInElementName(element, symbol)) {
+            return Conformity.notConform("characters' symbols are not in element's name");
         }
 
+        if(this.areLettersProperlyOrdered(element, symbol)) {
+            return Conformity.conform();
+        } else {
+            return Conformity.notConform("symbol's second character must appear after the first one in the element's name");
+        }
+    }
+
+    private boolean isSymbolTwoLettersLong(String symbol) {
+        return symbol.length() == 2;
+    }
+
+    private boolean isSymbolLettersInElementName(String element, String symbol) {
+        for (char c : symbol.toCharArray()) {
+            if(element.indexOf(c) == -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean areLettersProperlyOrdered(String element, String symbol) {
+        boolean lettersProperlyOrdered = true;
         int firstIndex = element.indexOf(symbol.charAt(0));
         String remaining = element.substring(firstIndex + 1);
         int secondIndex = firstIndex + 1 + remaining.indexOf(symbol.charAt(1));
 
         if(firstIndex >= secondIndex) {
-            return Conformity.notConform("symbol's second character must appear after the first one in the element's name");
+            lettersProperlyOrdered = false;
         }
-
-        return Conformity.conform();
+        return lettersProperlyOrdered;
     }
 }
