@@ -9,11 +9,11 @@ public class ConformanceChecker {
         element = element.toLowerCase();
         symbol = symbol.toLowerCase();
         if(symbol.length() != 2) {
-            return Conformity.notConform();
+            return Conformity.notConform("symbol is more than 2 characters");
         }
         for (char c : symbol.toCharArray()) {
             if(element.indexOf(c) == -1) {
-                return Conformity.notConform();
+                return Conformity.notConform("characters' symbols are not in element's name");
             }
         }
 
@@ -22,7 +22,7 @@ public class ConformanceChecker {
         int secondIndex = firstIndex + 1 + remaining.indexOf(symbol.charAt(1));
 
         if(firstIndex >= secondIndex) {
-            return Conformity.notConform();
+            return Conformity.notConform("symbol's second character must appear after the first one in the element's name");
         }
 
         return Conformity.conform();
