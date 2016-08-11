@@ -14,32 +14,32 @@ public class ConformanceCheckerTest {
 
     @Test
     public void conform() throws Exception {
-        assertThat(checker.isConform("Boron", "Bo"), is(true));
+        assertThat(checker.isConform("Boron", "Bo").isConform(), is(true));
     }
 
     @Test
     public void lessThanTwoLetters_NotConform() throws Exception {
-        assertThat(checker.isConform("Boron", "B"), is(false));
+        assertThat(checker.isConform("Boron", "B").isConform(), is(false));
     }
 
     @Test
     public void moreThanTwoLetters_NotConform() throws Exception {
-        assertThat(checker.isConform("Boron", "Bor"), is(false));
+        assertThat(checker.isConform("Boron", "Bor").isConform(), is(false));
     }
 
     @Test
     public void firstLetterNotInElement_NotConform() throws Exception {
-        assertThat(checker.isConform("Boron", "Zo"), is(false));
+        assertThat(checker.isConform("Boron", "Zo").isConform(), is(false));
     }
 
     @Test
     public void secondLetterNotInElement_NotConform() throws Exception {
-        assertThat(checker.isConform("Boron", "Bz"), is(false));
+        assertThat(checker.isConform("Boron", "Bz").isConform(), is(false));
     }
 
     @Test
     public void symbolCharacterNotInElementOrder_NotConform() throws Exception {
-        assertThat(checker.isConform("Silver", "Rv"), is(false));
+        assertThat(checker.isConform("Silver", "Rv").isConform(), is(false));
     }
 
 }

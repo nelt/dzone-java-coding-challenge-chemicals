@@ -5,15 +5,15 @@ package org.codingmatters.dzone.chemicals;
  */
 public class ConformanceChecker {
 
-    public boolean isConform(String element, String symbol) {
+    public Conformity isConform(String element, String symbol) {
         element = element.toLowerCase();
         symbol = symbol.toLowerCase();
         if(symbol.length() != 2) {
-            return false;
+            return Conformity.notConform();
         }
         for (char c : symbol.toCharArray()) {
             if(element.indexOf(c) == -1) {
-                return false;
+                return Conformity.notConform();
             }
         }
 
@@ -22,9 +22,9 @@ public class ConformanceChecker {
         int secondIndex = firstIndex + 1 + remaining.indexOf(symbol.charAt(1));
 
         if(firstIndex >= secondIndex) {
-            return false;
+            return Conformity.notConform();
         }
 
-        return true;
+        return Conformity.conform();
     }
 }
