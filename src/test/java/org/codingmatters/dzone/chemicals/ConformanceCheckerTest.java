@@ -48,4 +48,14 @@ public class ConformanceCheckerTest {
         assertThat(checker.isConform("Silver", "Rv").getReason(), is("symbol's second character must appear after the first one in the element's name"));
     }
 
+    @Test
+    public void doubleLetterSymbol_letterTwiceInWord_conform() throws Exception {
+        assertThat(checker.isConform("Xenon", "Nn").isConform(), is(true));
+    }
+
+    @Test
+    public void doubleLetterSymbol_letterNotTwiceInWord_notConform() throws Exception {
+        assertThat(checker.isConform("Xenon", "Xx").isConform(), is(false));
+    }
+
 }
