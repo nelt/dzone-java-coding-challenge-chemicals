@@ -19,6 +19,8 @@ public class ConformanceChecker {
     }
 
     public Conformity isConform(String element, String symbol) {
+        if(element.length() < 2) throw new IllegalArgumentException("element name must be at least two characters long");
+
         element = element.toLowerCase();
         symbol = symbol.toLowerCase();
 

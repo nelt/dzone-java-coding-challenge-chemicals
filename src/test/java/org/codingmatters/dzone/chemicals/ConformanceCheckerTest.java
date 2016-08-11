@@ -58,4 +58,8 @@ public class ConformanceCheckerTest {
         assertThat(checker.isConform("Xenon", "Xx").isConform(), is(false));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void elementNameShorterThanTwoLetters_RaisesAnException() throws Exception {
+        checker.isConform("a", "Aa");
+    }
 }
