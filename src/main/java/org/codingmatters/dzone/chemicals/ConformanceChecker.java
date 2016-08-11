@@ -8,9 +8,11 @@ public class ConformanceChecker {
     public Conformity isConform(String element, String symbol) {
         element = element.toLowerCase();
         symbol = symbol.toLowerCase();
+
         if(symbol.length() != 2) {
             return Conformity.notConform("symbol is more than 2 characters");
         }
+
         for (char c : symbol.toCharArray()) {
             if(element.indexOf(c) == -1) {
                 return Conformity.notConform("characters' symbols are not in element's name");
