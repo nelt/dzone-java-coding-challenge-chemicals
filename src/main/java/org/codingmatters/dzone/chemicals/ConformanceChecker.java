@@ -3,7 +3,7 @@ package org.codingmatters.dzone.chemicals;
 /**
  * Created by nelt on 8/9/16.
  */
-public class ChemicalSymbolConformanceChecker {
+public class ConformanceChecker {
 
     public boolean isConform(String element, String symbol) {
         element = element.toLowerCase();

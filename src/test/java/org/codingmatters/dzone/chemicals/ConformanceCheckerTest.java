@@ -1,6 +1,5 @@
 package org.codingmatters.dzone.chemicals;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -9,9 +8,9 @@ import static org.junit.Assert.*;
 /**
  * Created by nelt on 8/9/16.
  */
-public class ChemicalSymbolConformanceCheckerTest {
+public class ConformanceCheckerTest {
 
-    private ChemicalSymbolConformanceChecker checker = new ChemicalSymbolConformanceChecker();
+    private ConformanceChecker checker = new ConformanceChecker();
 
     @Test
     public void conform() throws Exception {
